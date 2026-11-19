@@ -69,8 +69,8 @@ footer.end{max-width:720px;margin:3rem auto 4rem;padding:1.5rem 1.1rem 0;border-
 [data-theme="hc"] .fill.lo{background-image:none}[data-theme="hc"] .hbar b,[data-theme="hc"] a{text-decoration:underline}
 
 body{background-image:radial-gradient(circle at 8% 0,var(--soft) 0,transparent 34%),radial-gradient(circle at 100% 38%,var(--soft) 0,transparent 28%);background-repeat:no-repeat;transition:padding .45s}
-@media (min-width:1100px){body.pn{padding-right:310px}}
-#panel{position:fixed;top:0;right:0;height:100%;width:min(310px,88vw);z-index:80;background:var(--bg);border-left:3px solid var(--acc);box-shadow:-10px 0 30px rgba(11,42,74,.18);padding:calc(1rem + env(safe-area-inset-top,0px)) 1.1rem calc(1.5rem + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(100%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
+@media (min-width:1100px){body.pn{padding-right:18rem}}
+#panel{position:fixed;top:0;right:0;height:100%;width:min(18rem,92vw);z-index:80;background:var(--bg);border-left:3px solid var(--acc);box-shadow:-10px 0 30px rgba(11,42,74,.18);padding:calc(1rem + env(safe-area-inset-top,0px)) 1.1rem calc(1.5rem + env(safe-area-inset-bottom,0px));overflow-y:auto;overflow-x:hidden;transform:translateX(100%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
 #panel.open{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 #panel .top{display:flex;gap:.5rem;align-items:flex-start;justify-content:space-between}
 #panel h2{font:800 1.35rem/1.15 Fraunces,Georgia,serif;margin:0 0 .5rem}
@@ -86,17 +86,9 @@ body{background-image:radial-gradient(circle at 8% 0,var(--soft) 0,transparent 3
 #panel #close{width:auto}
 #open{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:79;writing-mode:vertical-rl;border-radius:14px 0 0 14px;border-right:0;padding:1rem .6rem;background:var(--acc);color:var(--bg);border-color:var(--acc);box-shadow:-4px 4px 14px rgba(11,42,74,.2)}
 .axis{padding-right:4.5rem}
-.drop::first-letter{font:800 3.8rem/.85 Fraunces,Georgia,serif;float:left;margin:.08em .12em 0 0;color:var(--acc)}
 .orn{display:flex;align-items:center;gap:1rem;margin:2.6rem 0;color:var(--acc)}
 .orn::before,.orn::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
 .orn svg{width:34px;height:26px}
-.shelf{width:100%;height:auto;margin-top:2rem}
-.shelf rect{transform-origin:bottom;transform-box:fill-box;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
-@keyframes grow{from{transform:scaleY(0)}}
-.kpis{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;padding:0;margin:1.6rem 0 0}
-@media (min-width:620px){.kpis{grid-template-columns:repeat(4,1fr)}}
-.kpis li{background:var(--soft);border-bottom:4px solid var(--acc);border-radius:10px 10px 0 0;padding:.8rem .9rem;font-size:.82rem;line-height:1.35;color:var(--mut)}
-.kpis b{display:block;font:800 1.9rem/1.1 Fraunces,Georgia,serif;color:var(--acc);margin-bottom:.2rem}
 blockquote{position:relative;background:var(--soft);border-radius:0 14px 14px 0;padding:1.5rem 1.4rem 1.2rem 1.5rem}
 blockquote::before{content:"“"/"";position:absolute;top:-.55rem;left:.8rem;font:800 4.4rem/1 Fraunces,Georgia,serif;color:var(--lo)}
 figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
@@ -128,11 +120,64 @@ figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
 .dx p{margin-bottom:1.9rem}
 .dx .dek,.dx blockquote{font-style:normal}
 .dx h1{font-family:Lexend,sans-serif;font-weight:600;letter-spacing:0}
-.dx .drop::first-letter{font:inherit;float:none;margin:0;color:inherit}
-.dx blockquote::before,.dx .orn,.dx .shelf{display:none}
+.dx .orn{display:none}
 [data-theme="hc"] figure{box-shadow:none}[data-theme="hc"] .cbar.lo{background-image:none}
 @media (prefers-reduced-motion:reduce){.cbar{height:calc(var(--h)*1%)}.ci2,.val{opacity:1}}
 .rm *{animation:none!important}.rm .cbar{height:calc(var(--h)*1%)}.rm .ci2,.rm .val{opacity:1}
+
+header,main,footer.end{text-align:center}
+.hbar,table{text-align:left}
+.tools,.pick{justify-content:center}
+.dx header,.dx main,.dx footer.end{text-align:left}
+.note{border-left:0;border-top:4px solid var(--acc);border-radius:0 0 10px 10px}
+blockquote{border-left:0;border-top:4px solid var(--lo);border-radius:14px;padding:2.7rem 1.4rem 1.2rem}
+blockquote::before{left:50%;transform:translateX(-50%);top:-.15rem}
+blockquote p:last-of-type::after{content:"”"/"";font:800 2.6rem/0 Fraunces,Georgia,serif;color:var(--lo);vertical-align:-.45em;margin-left:.1em}
+.pick{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 .8rem}
+.pick button{font-size:.85rem}
+.res{font-weight:700;min-height:1.6em}
+.vc.has .c:not(.sel){opacity:.35}.c.sel{background:rgba(142,197,240,.3)}
+details{margin:.2rem 0 .8rem}
+summary{cursor:pointer;font-weight:700;color:var(--acc);min-height:44px;display:flex;align-items:center;justify-content:center}
+.ytu{margin:2.5rem 0 0;padding:1.4rem 1rem;border:2px solid var(--line);border-radius:14px}
+.ytu h2{font:800 1.4rem/1.2 Fraunces,Georgia,serif;margin:0 0 .5rem}
+
+#panel{letter-spacing:0;word-spacing:0;padding-left:1rem;padding-right:1rem}
+#panel *{min-width:0;overflow-wrap:anywhere}
+#panel button{flex-wrap:wrap;min-height:40px;padding:.3rem .7rem}
+#panel .grp{gap:.4rem;margin-bottom:.8rem}
+#panel p{font-size:.8rem;margin-bottom:.6rem}
+#panel h2{font-size:1.2rem}
+.sec{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.4rem}
+.sec a{font-weight:700;color:var(--ink);text-decoration:none;border:2px solid var(--line);border-radius:999px;padding:.4rem 1rem;min-height:44px;display:inline-flex;align-items:center;background:var(--soft)}
+.sec a:hover{border-color:var(--acc)}
+.small{font-size:.85rem;color:var(--mut);margin:0 0 .6rem}
+.blk{margin-top:1rem}
+.blk h2{font:800 1.8rem/1.2 Fraunces,Georgia,serif;margin:0 0 .6rem}
+.vid{position:relative;aspect-ratio:16/9;margin:1.2rem 0;border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo);border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#0B2A4A,#1F5FA8)}
+#play{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;background:transparent;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;font-size:1rem}
+#play:focus-visible{outline-color:#fff;outline-offset:-8px}
+.pb{width:4.2rem;height:4.2rem;border-radius:50%;background:#fff;position:relative;transition:transform .2s}
+#play:hover .pb{transform:scale(1.1)}
+.pb::after{content:"";position:absolute;left:55%;top:50%;transform:translate(-50%,-50%);border-style:solid;border-width:.8rem 0 .8rem 1.3rem;border-color:transparent transparent transparent #0B2A4A}
+.mode{flex:1 1 220px;display:flex;flex-direction:column;gap:.2rem;border-radius:14px;padding:.9rem 1rem;text-align:center;font-weight:400}
+.mode b{font:800 1.15rem Fraunces,Georgia,serif}
+.mode span{font-size:.85rem;color:var(--mut)}
+.mode[aria-pressed="true"] span{color:inherit}
+.card{margin:1.4rem 0 0;padding:1.3rem 1rem;background:var(--soft);border:2px solid var(--line);border-radius:14px;box-shadow:6px 6px 0 var(--lo);text-align:center}
+.prog{display:flex;justify-content:center;gap:.4rem;margin:0 0 .6rem}
+.prog i{width:.9rem;height:.9rem;border-radius:50%;border:2px solid var(--hi)}
+.prog i.on{background:var(--hi)}.prog i.cur{outline:2px solid var(--acc);outline-offset:2px}
+.card h3{font:800 1.25rem/1.35 Fraunces,Georgia,serif;margin:.3rem 0 1rem}
+.opts{display:grid;gap:.6rem;text-align:left}
+.opts button{border-radius:12px;font-size:.95rem;min-height:48px;padding:.6rem 1rem;background:var(--bg);text-align:left}
+.opts button.ok{border:3px solid var(--hi)}
+.opts button.no{border:3px dashed var(--ink)}
+.opts .m{font-weight:400;font-size:.85rem;margin-left:.5rem}
+.fb{min-height:1.5em;margin:1rem 0 .6rem;font-size:.95rem}
+.score{font:800 3.2rem/1 Fraunces,Georgia,serif;color:var(--acc);margin:.2rem 0}
+.lvl{font:800 1.6rem Fraunces,Georgia,serif}
+.dx .card{text-align:left}
 </style>
 </head>
 <body>
@@ -163,18 +208,12 @@ figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
 <h1>Leer por gusto: el hábito que no termina de instalarse entre los jóvenes</h1>
 <p class="dek">Entre los 20 y los 29 años casi nadie queda fuera de la lectura, pero solo una parte lee libros con frecuencia y por gusto. La Encuesta Nacional de Participación Cultural y Comportamiento Lector (ENPCCL) 2024 muestra que ese hábito se asocia con los libros que hay en casa y, en menor medida, con el empujón familiar de la infancia.</p>
 <p class="meta" id="meta">Lectura de unos 7 minutos · Los gráficos responden al mouse, al toque y al teclado</p>
-<svg id="shelf" class="shelf" viewBox="0 0 640 120" aria-hidden="true"></svg>
-<ul class="kpis" aria-label="Cifras clave del reportaje">
-<li><b data-n="99.8">99,8%</b>leyó algo en los últimos 12 meses</li>
-<li><b data-n="74.5">74,5%</b>leyó al menos un libro en el último año</li>
-<li><b data-n="44.9">44,9%</b>lee libros al menos una vez por semana</li>
-<li><b data-n="61.8">61,8%</b>lee cada semana en hogares con más de 100 libros</li>
-</ul>
+<nav class="sec" aria-label="Apartados"><a href="#contenido">1 · Reportaje</a><a href="#video">2 · Minireportaje</a><a href="#trivia">3 · Trivia</a></nav>
 </header>
 
 <main id="contenido" tabindex="-1">
 <article id="art">
-<p class="drop">Para muchos jóvenes, leer es parte de la rutina: al despertar revisan mensajes, correos o redes sociales, y durante el día se topan con textos todo el tiempo. Pero estar rodeado de lectura no es lo mismo que tomar un libro por iniciativa propia. Los datos de la ENPCCL 2024 para las personas de entre 20 y 29 años lo muestran bien: casi todas leen algo, y la cifra va bajando a medida que se pide más, primero libros y después frecuencia. El siguiente gráfico muestra cuatro cifras, de la más amplia a la más exigente. La primera reúne las cinco preguntas de lectura de la encuesta (libros, diarios y revistas, cómics, textos de trabajo o estudio, y correos, redes y páginas web) y las otras tres salen de una sola pregunta cada una.</p>
+<p>Para muchos jóvenes, leer es parte de la rutina: al despertar revisan mensajes, correos o redes sociales, y durante el día se topan con textos todo el tiempo. Pero estar rodeado de lectura no es lo mismo que tomar un libro por iniciativa propia. Los datos de la ENPCCL 2024 para las personas de entre 20 y 29 años lo muestran bien: casi todas leen algo, y la cifra va bajando a medida que se pide más, primero libros y después frecuencia. El siguiente gráfico muestra cuatro cifras, de la más amplia a la más exigente. La primera reúne las cinco preguntas de lectura de la encuesta (libros, diarios y revistas, cómics, textos de trabajo o estudio, y correos, redes y páginas web) y las otras tres salen de una sola pregunta cada una.</p>
 
 <figure id="f1" aria-labelledby="d1">
 <p class="vh" id="d1">Gráfico de barras horizontales sobre la lectura de jóvenes de 20 a 29 años. Leyó algo en los últimos 12 meses: 99,8%. Lee a diario correos, redes sociales, foros o páginas web: 93,6%. Leyó al menos un libro en los últimos 12 meses: 74,5%. Lee libros al menos una vez por semana: 44,9%.</p>
@@ -183,9 +222,9 @@ figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
 <div class="tools"><button data-t="t1" aria-expanded="false">Ver datos en tabla</button></div>
 <table id="t1" hidden><caption class="vh">Datos del gráfico 1</caption><thead><tr><th>Indicador</th><th>Porcentaje</th></tr></thead><tbody></tbody></table>
 <figcaption>
-<p><strong>Preguntas:</strong> «En los últimos 12 meses, ¿con qué frecuencia ha leído…?» libros; correos electrónicos, redes sociales, foros y páginas web (excluyendo diarios, periódicos y revistas), durante al menos 15 minutos. <strong>Respuestas consideradas:</strong> «al menos una vez al día» (93,6%); desde «al menos una vez al año» hasta «al menos una vez al día», es decir, todas salvo «No leo» (74,5%); «al menos una vez al día» o «a la semana» (44,9%). El 99,8% es un indicador construido: respondió «al menos una vez al año» o con mayor frecuencia en al menos una de las cinco preguntas de lectura (libros; periódicos y revistas; cómics y manga; informes laborales, textos escolares o artículos académicos; correos, redes y páginas web). Las barras en azul oscuro corresponden a lectura de libros.</p>
-<p><strong>Base:</strong> jóvenes de 20 a 29 años (n = 1.767).</p>
-<p><strong>Fuente:</strong> Encuesta Nacional de Participación Cultural y Comportamiento Lector (ENPCCL) 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</p>
+<details open><summary>Cómo leerlo</summary><p>Cada barra muestra qué porcentaje de jóvenes cumple cada condición, de la más amplia a la más exigente. Las barras oscuras corresponden a libros.</p></details>
+<details><summary>Más detalles</summary><p>Preguntas: «En los últimos 12 meses, ¿con qué frecuencia ha leído…?» libros; correos, redes sociales, foros y páginas web (sin diarios ni revistas), durante al menos 15 minutos. 93,6%: «al menos una vez al día». 74,5%: cualquier respuesta salvo «No leo». 44,9%: «al día» o «a la semana». El 99,8% es un indicador construido con las cinco preguntas de lectura de la encuesta (libros; diarios y revistas; cómics y manga; textos de estudio o trabajo; correos, redes y web), contando «al menos una vez al año» o más.</p></details>
+<p><strong>Base:</strong> jóvenes de 20 a 29 años (n = 1.767). <strong>Fuente:</strong> ENPCCL 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</p>
 </figcaption>
 </figure>
 
@@ -205,13 +244,14 @@ figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
 
 <figure id="f2" aria-labelledby="d2">
 <p class="vh" id="d2">Gráfico de columnas con barras de error. Porcentaje que lee libros al menos una vez por semana según libros en el hogar: menos de 10 libros, 32,9%; 11 a 25, 44,5%; 26 a 50, 51,1%; 51 a 100, 50,7%; más de 100, 61,8%. Los márgenes de error están en la tabla de datos.</p>
+<div class="selbox"><p id="sq"><b>Encuentra tu caso:</b> ¿cuántos libros hay en tu casa?</p><div class="pick" id="p2" role="group" aria-labelledby="sq"></div><p id="sr" class="res" aria-live="polite"></p></div>
 <div class="vc" id="h2" role="group" aria-labelledby="d2"></div>
 <div class="tools"><button data-t="t2" aria-expanded="false">Ver datos en tabla</button><button id="ci" aria-pressed="true">Margen de error</button></div>
 <table id="t2" hidden><caption class="vh">Datos del gráfico 2</caption><thead><tr><th>Libros en el hogar</th><th>Valor</th><th>Margen 95%</th><th>n</th></tr></thead><tbody></tbody></table>
 <figcaption>
-<p><strong>Pregunta:</strong> «¿Cuántos libros hay en su hogar?», cruzada con «En los últimos 12 meses, ¿con qué frecuencia ha leído libros durante al menos 15 minutos?». Se muestra el porcentaje que respondió «al menos una vez al día» o «al menos una vez a la semana» en cada tramo. «Más de 100 libros» reúne los tramos «101 a 200» y «Más de 200» de la encuesta. Las líneas verticales indican el margen de error al 95%. Los libros corresponden al hogar actual, no al de la infancia, y los resultados muestran una asociación, no una relación causal. Las columnas en azul oscuro corresponden a hogares con 26 libros o más.</p>
-<p><strong>Base:</strong> jóvenes de 20 a 29 años que respondieron ambas preguntas (n = 1.756).</p>
-<p><strong>Fuente:</strong> Encuesta Nacional de Participación Cultural y Comportamiento Lector (ENPCCL) 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</p>
+<details open><summary>Cómo leerlo</summary><p>Cada columna muestra qué porcentaje de jóvenes lee libros cada semana, según cuántos libros hay en su casa. La línea negra es el margen de error: mientras más corta, más precisa es la cifra.</p></details>
+<details><summary>Más detalles</summary><p>Se consideró a quienes leen libros «al menos una vez a la semana» o «al día». «Más de 100» reúne los tramos de 101 a 200 y más de 200 libros. Los libros son los del hogar actual, no los de la infancia, y los datos muestran una asociación, no una causa.</p></details>
+<p><strong>Base:</strong> jóvenes de 20 a 29 años (n = 1.756). <strong>Fuente:</strong> ENPCCL 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</p>
 </figcaption>
 </figure>
 
@@ -229,7 +269,30 @@ figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
 <blockquote><p>Hay factores sociales que tienen que ver con el acceso a los libros, pero también existe un factor cultural: saber que un libro puede ser útil de distintas maneras, ya sea para aprender, distraerse o ampliar el vocabulario. Incluso, en un país con tantas desigualdades educativas como Chile, un mismo libro puede significar algo muy distinto para dos personas.</p><footer>Víctor Hugo Ortega, periodista y escritor</footer></blockquote>
 
 <p class="note">En resumen, los jóvenes leen mucho, pero leer libros con frecuencia es otra cosa. Estudiar, informarse y disfrutar pueden convivir en una misma persona, y tener libros en casa o haber recibido estímulos de niño aparece asociado con leer más. La encuesta tiene límites: muestra asociaciones y no causas, y no mide cosas como la distancia a una biblioteca o el precio de los libros. Queda abierta una pregunta: cómo se construye una relación con la lectura que vaya más allá de la obligación y encuentre un lugar en la vida diaria.</p>
+<section class="ytu" aria-labelledby="yt"><h2 id="yt">Y tú, ¿dónde te ubicas?</h2>
+<p>Elige lo que más se parece a ti. Tu respuesta no se envía ni se guarda.</p>
+<div class="pick" role="group" aria-label="Tu frecuencia de lectura de libros">
+<button aria-pressed="false" data-m="Estás en el 44,9% de los jóvenes de 20 a 29 años que lee libros al menos una vez por semana.">Leo casi todas las semanas</button>
+<button aria-pressed="false" data-m="Eres parte del 74,5% que leyó al menos un libro en el último año. Leer cada semana es menos común: lo hace el 44,9%.">Leo algunos libros al año</button>
+<button aria-pressed="false" data-m="No es raro: un 74,5% leyó al menos un libro en el último año, pero solo un 44,9% lo hace cada semana. Además, la lectura frecuente es más común en hogares con más libros, aunque eso no prueba una causa.">Hace tiempo que no leo un libro</button></div>
+<p id="ytm" class="res" aria-live="polite"></p></section>
 </article>
+<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
+<section id="video" class="blk" aria-labelledby="vh">
+<h2 id="vh">Minireportaje</h2>
+<p>Mira el minireportaje en video.</p>
+<div class="vid"><button id="play"><span class="pb" aria-hidden="true"></span><span>Reproducir minireportaje</span></button></div>
+<p class="small"><a href="https://youtu.be/Aw07hY6MdGM" target="_blank" rel="noopener">Abrir en YouTube<span class="vh"> (se abre en una pestaña nueva)</span></a></p>
+</section>
+<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
+<section id="trivia" class="blk" aria-labelledby="th">
+<h2 id="th">Trivia lectora</h2>
+<p>Pon a prueba tus lecturas con 6 preguntas. Al final te diremos qué nivel de lector tienes. Elige un modo:</p>
+<div class="pick" id="modes">
+<button class="mode" aria-pressed="false"><b>Modo básico</b><span>Lecturas muy conocidas: la infancia y Chile</span></button>
+<button class="mode" aria-pressed="false"><b>Modo avanzado</b><span>Clásicos de la literatura</span></button></div>
+<div id="game" class="card" hidden></div>
+</section>
 </main>
 <footer class="end">Datos: ENPCCL 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</footer>
 
@@ -306,14 +369,6 @@ sp.onclick=function(){
  parts.forEach(function(t,i){var u=new SpeechSynthesisUtterance(t);u.lang="es-CL";if(i===parts.length-1)u.onend=function(){sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar"};speechSynthesis.speak(u)})};
 addEventListener("pagehide",function(){if(window.speechSynthesis)speechSynthesis.cancel()});
 
-// Estante decorativo
-(function(){var c=["var(--hi)","var(--lo)","var(--acc)","var(--soft)"],x=4,i=0,t="";
-while(x<616){var w=20+(i*7)%16,ht=52+(i*37)%52;t+='<rect x="'+x+'" y="'+(116-ht)+'" width="'+w+'" height="'+ht+'" rx="2" fill="'+c[i%4]+'" stroke="var(--hi)" stroke-width="2" style="animation-delay:'+i*55+'ms"/>';x+=w+3;i++}
-$("shelf").innerHTML=t+'<line x1="0" x2="640" y1="117" y2="117" stroke="var(--ink)" stroke-width="3"/>'})();
-// Cifras clave con conteo
-var calm=function(){return root.classList.contains("rm")||matchMedia("(prefers-reduced-motion:reduce)").matches};
-var kio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;kio.unobserve(e.target);var b=e.target.querySelector("b"),to=parseFloat(b.dataset.n);if(calm())return;var t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1200);b.textContent=f(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
-document.querySelectorAll(".kpis li").forEach(function(x){kio.observe(x)});
 // Modo dislexia y regla de lectura
 tog("dx",function(o){root.classList.toggle("dx",o)},"dx");
 var rl=$("rl");
@@ -334,6 +389,57 @@ setTimeout(function(){panel(ld("pn")!=="0",0)},400);
 function zl(){$("zl").textContent=Math.round(z*100)+"%"}
 $("bigger").addEventListener("click",zl);$("smaller").addEventListener("click",zl);zl();
 $("reset").onclick=function(){setZ(1);zl();["dx","space","ruler","theme","hc","rm"].forEach(function(i){if($(i).getAttribute("aria-pressed")==="true")$(i).click()})};
+
+// Encuentra tu caso (gráfico 2)
+var p2=$("p2");
+D2.forEach(function(d,i){var b=document.createElement("button");b.textContent=d[0].replace(" libros","");b.setAttribute("aria-pressed","false");
+ b.onclick=function(){var on=b.getAttribute("aria-pressed")!=="true";[].forEach.call(p2.children,function(x,j){x.setAttribute("aria-pressed",on&&j===i)});vc.classList.toggle("has",on);
+  vc.querySelectorAll(".c").forEach(function(c,j){c.classList.toggle("sel",on&&j===i)});
+  $("sr").textContent=on?"En hogares con "+d[0].toLowerCase()+", un "+f(d[1])+" de los jóvenes lee libros cada semana.":""};
+ p2.appendChild(b)});
+vc.querySelectorAll(".c").forEach(function(g,j){g.addEventListener("click",function(){p2.children[j].click()});g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();p2.children[j].click()}})});
+// Y tú
+document.querySelectorAll(".ytu .pick button").forEach(function(b,i,all){b.onclick=function(){all.forEach(function(x){x.setAttribute("aria-pressed",x===b)});$("ytm").textContent=b.dataset.m}});
+
+// Video
+$("play").onclick=function(){document.querySelector(".vid").innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/Aw07hY6MdGM?autoplay=1&rel=0" title="Minireportaje en YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>'};
+// Trivia (la primera opción de cada pregunta es la correcta; se mezclan al mostrarlas)
+var TQ=[[
+["¿Quién creó a Papelucho, el niño chileno que cuenta sus aventuras en un diario?",["Marcela Paz","Gabriela Mistral","María Luisa Bombal","Isabel Allende"],"Marcela Paz es el seudónimo de Ester Huneeus."],
+["Condorito, la historieta chilena más famosa, tiene como protagonista a un…",["Cóndor","Huemul","Pingüino","Puma"],"Es un cóndor, ave símbolo de Chile."],
+["En «Caperucita Roja», ¿quién se hace pasar por la abuela?",["El lobo","El leñador","La bruja","El zorro"],"En la versión más conocida, el lobo se disfraza de abuela."],
+["¿Qué chilena ganó el Premio Nobel de Literatura en 1945?",["Gabriela Mistral","Violeta Parra","Isabel Allende","Marcela Paz"],"Gabriela Mistral fue la primera persona latinoamericana en recibirlo."],
+["En «El Principito», ¿qué flor cuida el protagonista en su pequeño planeta?",["Una rosa","Un tulipán","Un girasol","Un clavel"],"Cuida una rosa única y orgullosa."],
+["En «Cenicienta», ¿qué pierde al huir del baile a medianoche?",["Un zapato","Su corona","Un collar","Una varita"],"El príncipe la busca gracias a ese zapato."]
+],[
+["¿Quién escribió «Don Quijote de la Mancha»?",["Miguel de Cervantes","Lope de Vega","Francisco de Quevedo","Federico García Lorca"],"Se publicó en dos partes, en 1605 y 1615."],
+["¿En qué pueblo ficticio transcurre «Cien años de soledad»?",["Macondo","Comala","Santa María","Yoknapatawpha"],"Es la novela de Gabriel García Márquez, publicada en 1967."],
+["En «1984», de George Orwell, ¿quién vigila a todos los ciudadanos?",["El Gran Hermano","El Gran Inquisidor","El Gran Gatsby","El Gran Sabio"],"El Gran Hermano es la figura que simboliza la vigilancia del Estado."],
+["¿Cómo se llama el héroe de «La Odisea» que tarda diez años en volver a Ítaca?",["Odiseo (Ulises)","Aquiles","Héctor","Eneas"],"La obra se atribuye a Homero."],
+["«Crimen y castigo» es una novela de…",["Fiódor Dostoievski","León Tolstói","Antón Chéjov","Nikolái Gógol"],"Dostoievski la publicó en 1866."],
+["Aniceto Hevia es el protagonista de la novela chilena…",["Hijo de ladrón","Martín Rivas","La casa de los espíritus","Subterra"],"Es de Manuel Rojas y se publicó en 1951."]
+]];
+var LV=[[["Lector en pausa","Todavía hay muchas historias esperándote."],["Lector curioso","Conoces varias historias y vas por buen camino."],["Lector constante","Se nota que lees y recuerdas lo que lees."],["Lector estrella","Conoces muy bien las historias que todos hemos leído."]],
+[["Explorador de clásicos","Los clásicos te esperan: es buen momento para partir con uno."],["Lector en camino","Ya conoces algunos clásicos y puedes seguir sumando."],["Lector avezado","Tienes buen recorrido por los clásicos."],["Maestro de biblioteca","Dominas los clásicos de la literatura."]]];
+var mode=-1,qi=0,sc=0,ans=false,ord=[],G=$("game");
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function start(m){mode=m;qi=0;sc=0;[].forEach.call($("modes").children,function(b,j){b.setAttribute("aria-pressed",j===m)});G.hidden=false;show()}
+function show(){ans=false;var q=TQ[mode][qi],d="";for(var i=0;i<6;i++)d+='<i class="'+(i<qi?"on":i===qi?"cur":"")+'"></i>';
+ ord=shuf([0,1,2,3]);
+ G.innerHTML='<div class="prog" aria-hidden="true">'+d+'</div><p class="small">Pregunta '+(qi+1)+' de 6 · '+(mode?"Modo avanzado":"Modo básico")+'</p><h3 id="qh" tabindex="-1">'+q[0]+'</h3><div class="opts" role="group" aria-labelledby="qh">'+ord.map(function(o,k){return '<button data-k="'+k+'">'+q[1][o]+"</button>"}).join("")+'</div><p class="fb" role="status"></p><button id="nx" hidden></button>';
+ G.querySelectorAll(".opts button").forEach(function(b){b.onclick=function(){answer(+b.dataset.k)}});
+ $("qh").focus()}
+function answer(k){if(ans)return;ans=true;var q=TQ[mode][qi],right=ord[k]===0;if(right)sc++;
+ G.querySelectorAll(".opts button").forEach(function(b,i){b.setAttribute("aria-disabled","true");b.tabIndex=-1;
+  if(ord[i]===0){b.classList.add("ok");b.insertAdjacentHTML("beforeend",'<span class="m">✓ Correcta</span>')}
+  else if(i===k){b.classList.add("no");b.insertAdjacentHTML("beforeend",'<span class="m">✗ Tu respuesta</span>')}});
+ G.querySelector(".fb").textContent=(right?"¡Correcto! ":"No esta vez. ")+q[2];
+ var n=$("nx");n.hidden=false;n.textContent=qi<5?"Siguiente pregunta":"Ver mi nivel";
+ n.onclick=function(){if(qi<5){qi++;show()}else result()}}
+function result(){var l=LV[mode][sc<2?0:sc<4?1:sc<6?2:3],d="";for(var i=0;i<6;i++)d+='<i class="on"></i>';
+ G.innerHTML='<div class="prog" aria-hidden="true">'+d+'</div><p class="small">Resultado · '+(mode?"Modo avanzado":"Modo básico")+'</p><h3 id="qh" tabindex="-1">Tu nivel de lector</h3><p class="score">'+sc+' de 6</p><p><span class="lvl">'+l[0]+'</span></p><p>'+l[1]+'</p><p class="small">Es solo un juego: no mide cuánto ni cómo lees.</p><div class="pick"><button id="again">Jugar de nuevo</button><button id="other">'+(mode?"Probar el modo básico":"Probar el modo avanzado")+"</button></div>";
+ $("again").onclick=function(){start(mode)};$("other").onclick=function(){start(1-mode)};$("qh").focus()}
+[].forEach.call($("modes").children,function(b,i){b.onclick=function(){start(i)}});
 </script>
 </body>
 </html>
