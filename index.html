@@ -26,7 +26,7 @@ button{font:inherit;font-size:.85rem;font-weight:700;color:var(--ink);background
 button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 button:hover{border-color:var(--acc)}
 header,main{max-width:720px;margin:auto;padding:0 1.1rem}
-header{padding-top:2.6rem;padding-bottom:1rem}
+header{padding-top:4.4rem;padding-bottom:1rem}
 h1{font:800 clamp(2.1rem,7vw,3.4rem)/1.08 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0 0 1.4rem;font-variation-settings:"opsz" 144}
 .dek{font-style:italic;color:var(--mut);font-size:1.1rem;border-top:4px solid var(--lo);padding-top:1rem;margin:0}
 .meta{font-size:.85rem;color:var(--mut);margin:1.2rem 0 0}
@@ -183,6 +183,15 @@ summary{cursor:pointer;font-weight:700;color:var(--acc);min-height:44px;display:
 .topbar a[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 footer.end a{color:var(--acc);font-weight:700}
 footer.end p{margin:0 0 .6rem}
+
+.stack{position:fixed;bottom:16px;right:24px;width:84px;height:auto;z-index:30;pointer-events:none;overflow:visible;transition:right .45s cubic-bezier(.2,.7,.2,1)}
+.stack .b{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.stack .b.on{opacity:1;transform:translateY(0)}
+.stack .bk{stroke:var(--line);stroke-width:1}
+body.pn .stack{right:calc(min(18rem,92vw) + 24px)}
+@media (max-height:640px){.stack{width:64px}}
+@media (max-width:1200px){.stack{display:none}}
+header h1{scroll-margin-top:6rem}
 </style>
 </head>
 <body>
@@ -210,7 +219,7 @@ footer.end p{margin:0 0 .6rem}
 
 <div id="tip" role="status" aria-live="polite"></div>
 
-<div class="topbar"><nav aria-label="Páginas del sitio"><a id="n-reportaje" href="#reportaje" aria-current="page">Reportaje</a><a id="n-minireportaje" href="#minireportaje">Minireportaje</a><a id="n-trivia" href="#trivia">Trivia</a></nav></div>
+<div class="topbar"><nav aria-label="Páginas del sitio"><a id="n-reportaje" href="#reportaje" aria-current="page">Reportaje</a><a id="n-minireportaje" href="#minireportaje">Minireportaje audiovisual</a><a id="n-trivia" href="#trivia">Trivia</a></nav></div>
 
 <div class="view" id="v-reportaje">
 <header>
@@ -289,7 +298,7 @@ footer.end p{margin:0 0 .6rem}
 </div>
 <div class="view" id="v-minireportaje" hidden>
 <header>
-<h1 tabindex="-1">Minireportaje</h1>
+<h1 tabindex="-1">Minireportaje audiovisual</h1>
 <p class="dek">Los datos muestran cuántos jóvenes leen libros cada semana, pero no alcanzan a contar cómo nace ese vínculo. En este minireportaje de cinco minutos conversamos con la bibliotecaria Susana Pineda y el escritor Víctor Hugo Ortega sobre el papel de la infancia, las guaguatecas y el acompañamiento familiar frente a la lectura obligatoria.</p>
 </header>
 
@@ -318,6 +327,7 @@ footer.end p{margin:0 0 .6rem}
 <p id="credito">Datos: ENPCCL 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</p>
 <p>Síguenos en Instagram: <a href="https://www.instagram.com/pulsolector_ua?dmpr=MWlpOTN4d3o1N2p3bw%3D%3D" target="_blank" rel="noopener">@pulsolector_ua<span class="vh"> (se abre en una pestaña nueva)</span></a></p>
 </footer>
+<svg class="stack" viewBox="0 0 104 183" aria-hidden="true" focusable="false"><g class="b" data-i="0"><rect class="bk" x="4" y="156" width="92" height="24" rx="2" fill="#0b2545"/><rect x="5.5" y="157.5" width="89" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="11" y="156" width="2.6" height="24" fill="#c9a24a" opacity=".9"/><rect x="86.4" y="156" width="2.6" height="24" fill="#c9a24a" opacity=".9"/><rect x="35.5" y="163.5" width="29" height="9" rx="1" fill="#efe8d4" opacity=".88"/></g><g class="b" data-i="1"><rect class="bk" x="10" y="140" width="78" height="16" rx="2" fill="#3e5c76"/><rect x="11.5" y="141.5" width="75" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="17" y="140" width="2.6" height="16" fill="#efe8d4" opacity=".9"/><rect x="78.4" y="140" width="2.6" height="16" fill="#efe8d4" opacity=".9"/><rect x="36.5" y="145.0" width="25" height="6" rx="1" fill="#efe8d4" opacity=".88"/></g><g class="b" data-i="2"><rect class="bk" x="2" y="120" width="86" height="20" rx="2" fill="#8da9c4"/><rect x="3.5" y="121.5" width="83" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="9" y="120" width="2.6" height="20" fill="#0b2545" opacity=".9"/><rect x="78.4" y="120" width="2.6" height="20" fill="#0b2545" opacity=".9"/><rect x="31.0" y="126.0" width="28" height="8" rx="1" fill="#efe8d4" opacity=".88"/></g><g class="b" data-i="3"><rect class="bk" x="12" y="108" width="68" height="12" rx="2" fill="#efe8d4"/><rect x="13.5" y="109.5" width="65" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="19" y="108" width="2.6" height="12" fill="#b85c38" opacity=".9"/><rect x="70.4" y="108" width="2.6" height="12" fill="#b85c38" opacity=".9"/></g><g class="b" data-i="4"><rect class="bk" x="0" y="82" width="94" height="26" rx="2" fill="#13315c"/><rect x="1.5" y="83.5" width="91" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="7" y="82" width="2.6" height="26" fill="#c9a24a" opacity=".9"/><rect x="84.4" y="82" width="2.6" height="26" fill="#c9a24a" opacity=".9"/><rect x="32.0" y="90.0" width="30" height="10" rx="1" fill="#efe8d4" opacity=".88"/></g><g class="b" data-i="5"><rect class="bk" x="8" y="68" width="74" height="14" rx="2" fill="#4a6a8a"/><rect x="9.5" y="69.5" width="71" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="15" y="68" width="2.6" height="14" fill="#efe8d4" opacity=".9"/><rect x="72.4" y="68" width="2.6" height="14" fill="#efe8d4" opacity=".9"/><rect x="33.0" y="72.5" width="24" height="5" rx="1" fill="#efe8d4" opacity=".88"/></g><g class="b" data-i="6"><rect class="bk" x="4" y="50" width="82" height="18" rx="2" fill="#b9d0e6"/><rect x="5.5" y="51.5" width="79" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="11" y="50" width="2.6" height="18" fill="#0b2545" opacity=".9"/><rect x="76.4" y="50" width="2.6" height="18" fill="#0b2545" opacity=".9"/><rect x="32.0" y="55.5" width="26" height="7" rx="1" fill="#0b2545" opacity=".88"/></g><g class="b" data-i="7"><rect class="bk" x="14" y="39" width="62" height="11" rx="2" fill="#b85c38"/><rect x="15.5" y="40.5" width="59" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="21" y="39" width="2.6" height="11" fill="#efe8d4" opacity=".9"/><rect x="66.4" y="39" width="2.6" height="11" fill="#efe8d4" opacity=".9"/></g><g class="b" data-i="8"><rect class="bk" x="6" y="17" width="76" height="22" rx="2" fill="#0b2545"/><rect x="7.5" y="18.5" width="73" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="13" y="17" width="2.6" height="22" fill="#efe8d4" opacity=".9"/><rect x="72.4" y="17" width="2.6" height="22" fill="#efe8d4" opacity=".9"/><rect x="32.0" y="24.0" width="24" height="8" rx="1" fill="#efe8d4" opacity=".88"/></g><g class="b" data-i="9"><rect class="bk" x="12" y="3" width="56" height="14" rx="2" fill="#3e5c76"/><rect x="13.5" y="4.5" width="53" height="1.6" rx=".8" fill="#fff" opacity=".16"/><rect x="19" y="3" width="2.6" height="14" fill="#c9a24a" opacity=".9"/><rect x="58.4" y="3" width="2.6" height="14" fill="#c9a24a" opacity=".9"/><rect x="31.0" y="7.5" width="18" height="5" rx="1" fill="#efe8d4" opacity=".88"/></g></svg>
 
 <script>
 var $=function(i){return document.getElementById(i)},root=document.documentElement;
@@ -475,9 +485,14 @@ function result(){var l=LV[mode][sc<2?0:sc<4?1:sc<6?2:3],d="";for(var i=0;i<6;i+
  $("again").onclick=function(){start(mode)};$("other").onclick=function(){start(1-mode)};$("qh").focus()}
 [].forEach.call($("modes").children,function(b,i){b.onclick=function(){start(i)}});
 
+var stk=document.querySelectorAll(".stack .b"),stT=0;
+function stackUpdate(){var m=document.documentElement.scrollHeight-innerHeight,p=m>0?Math.min(1,Math.max(0,scrollY/m)):0,n=Math.min(10,1+Math.floor(p*10));
+ stk.forEach(function(b,i){b.classList.toggle("on",i<n)})}
+addEventListener("scroll",function(){if(!stT)stT=requestAnimationFrame(function(){stT=0;stackUpdate()})},{passive:true});
+addEventListener("resize",stackUpdate);
 // Vistas (reportaje, minireportaje y trivia en un solo archivo)
 var VIEWS=["reportaje","minireportaje","trivia"],
- TT={reportaje:"Leer por gusto: el hábito que no termina de instalarse entre los jóvenes",minireportaje:"Minireportaje · Leer por gusto",trivia:"Trivia lectora · Leer por gusto"};
+ TT={reportaje:"Leer por gusto: el hábito que no termina de instalarse entre los jóvenes",minireportaje:"Minireportaje audiovisual · Leer por gusto",trivia:"Trivia lectora · Leer por gusto"};
 function route(first){
  var h=location.hash.slice(1);if(VIEWS.indexOf(h)<0)h="reportaje";
  VIEWS.forEach(function(v){$("v-"+v).hidden=v!==h;var a=$("n-"+v);if(v===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
@@ -485,6 +500,7 @@ function route(first){
  if(h!=="minireportaje")resetVid();
  if(window.speechSynthesis){speechSynthesis.cancel();sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar"}
  hideTip();
+ stackUpdate();
  if(!first){scrollTo(0,0);$("v-"+h).querySelector("h1").focus({preventScroll:true})}
 }
 addEventListener("hashchange",function(){route(false)});
