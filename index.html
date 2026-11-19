@@ -26,7 +26,7 @@ button{font:inherit;font-size:.85rem;font-weight:700;color:var(--ink);background
 button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 button:hover{border-color:var(--acc)}
 header,main{max-width:720px;margin:auto;padding:0 1.1rem}
-header{padding-top:4rem;padding-bottom:1rem}
+header{padding-top:2.6rem;padding-bottom:1rem}
 h1{font:800 clamp(2.1rem,7vw,3.4rem)/1.08 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0 0 1.4rem;font-variation-settings:"opsz" 144}
 .dek{font-style:italic;color:var(--mut);font-size:1.1rem;border-top:4px solid var(--lo);padding-top:1rem;margin:0}
 .meta{font-size:.85rem;color:var(--mut);margin:1.2rem 0 0}
@@ -148,9 +148,6 @@ summary{cursor:pointer;font-weight:700;color:var(--acc);min-height:44px;display:
 #panel .grp{gap:.4rem;margin-bottom:.8rem}
 #panel p{font-size:.8rem;margin-bottom:.6rem}
 #panel h2{font-size:1.2rem}
-.sec{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.4rem}
-.sec a{font-weight:700;color:var(--ink);text-decoration:none;border:2px solid var(--line);border-radius:999px;padding:.4rem 1rem;min-height:44px;display:inline-flex;align-items:center;background:var(--soft)}
-.sec a:hover{border-color:var(--acc)}
 .small{font-size:.85rem;color:var(--mut);margin:0 0 .6rem}
 .blk{margin-top:1rem}
 .blk h2{font:800 1.8rem/1.2 Fraunces,Georgia,serif;margin:0 0 .6rem}
@@ -178,11 +175,19 @@ summary{cursor:pointer;font-weight:700;color:var(--acc);min-height:44px;display:
 .score{font:800 3.2rem/1 Fraunces,Georgia,serif;color:var(--acc);margin:.2rem 0}
 .lvl{font:800 1.6rem Fraunces,Georgia,serif}
 .dx .card{text-align:left}
+
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:2px solid var(--line)}
+.topbar nav{max-width:720px;margin:auto;padding:.55rem 1.1rem;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.topbar a{font-weight:700;color:var(--ink);text-decoration:none;border:2px solid var(--line);border-radius:999px;padding:.35rem 1.1rem;min-height:44px;display:inline-flex;align-items:center;background:var(--soft)}
+.topbar a:hover{border-color:var(--acc)}
+.topbar a[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+footer.end a{color:var(--acc);font-weight:700}
+footer.end p{margin:0 0 .6rem}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="bk" viewBox="0 0 32 24"><path d="M2 4c5-2 10-2 14 1 4-3 9-3 14-1v16c-5-2-10-2-14 1-4-3-9-3-14-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 5v16" stroke="currentColor" stroke-width="2"/></symbol></svg>
-<a class="skip" href="#contenido">Saltar al reportaje</a>
+<a class="skip" id="skip" href="#contenido">Saltar al contenido</a>
 <div id="prog" aria-hidden="true"></div>
 <aside id="panel" aria-labelledby="ph">
 <div class="top"><h2 id="ph" tabindex="-1">Panel de accesibilidad</h2><button id="close" aria-label="Ocultar panel de accesibilidad">Ocultar</button></div>
@@ -202,16 +207,19 @@ summary{cursor:pointer;font-weight:700;color:var(--acc);min-height:44px;display:
 </aside>
 <button id="open" aria-controls="panel" aria-expanded="false" aria-label="Abrir panel de accesibilidad" hidden>Accesibilidad</button>
 <div id="rl" hidden></div>
+
 <div id="tip" role="status" aria-live="polite"></div>
 
+<div class="topbar"><nav aria-label="Páginas del sitio"><a id="n-reportaje" href="#reportaje" aria-current="page">Reportaje</a><a id="n-minireportaje" href="#minireportaje">Minireportaje</a><a id="n-trivia" href="#trivia">Trivia</a></nav></div>
+
+<div class="view" id="v-reportaje">
 <header>
-<h1>Leer por gusto: el hábito que no termina de instalarse entre los jóvenes</h1>
+<h1 tabindex="-1">Leer por gusto: el hábito que no termina de instalarse entre los jóvenes</h1>
 <p class="dek">Entre los 20 y los 29 años casi nadie queda fuera de la lectura, pero solo una parte lee libros con frecuencia y por gusto. La Encuesta Nacional de Participación Cultural y Comportamiento Lector (ENPCCL) 2024 muestra que ese hábito se asocia con los libros que hay en casa y, en menor medida, con el empujón familiar de la infancia.</p>
 <p class="meta" id="meta">Lectura de unos 7 minutos · Los gráficos responden al mouse, al toque y al teclado</p>
-<nav class="sec" aria-label="Apartados"><a href="#contenido">1 · Reportaje</a><a href="#video">2 · Minireportaje</a><a href="#trivia">3 · Trivia</a></nav>
 </header>
 
-<main id="contenido" tabindex="-1">
+<main tabindex="-1">
 <article id="art">
 <p>Para muchos jóvenes, leer es parte de la rutina: al despertar revisan mensajes, correos o redes sociales, y durante el día se topan con textos todo el tiempo. Pero estar rodeado de lectura no es lo mismo que tomar un libro por iniciativa propia. Los datos de la ENPCCL 2024 para las personas de entre 20 y 29 años lo muestran bien: casi todas leen algo, y la cifra va bajando a medida que se pide más, primero libros y después frecuencia. El siguiente gráfico muestra cuatro cifras, de la más amplia a la más exigente. La primera reúne las cinco preguntas de lectura de la encuesta (libros, diarios y revistas, cómics, textos de trabajo o estudio, y correos, redes y páginas web) y las otras tres salen de una sola pregunta cada una.</p>
 
@@ -277,26 +285,94 @@ summary{cursor:pointer;font-weight:700;color:var(--acc);min-height:44px;display:
 <button aria-pressed="false" data-m="No es raro: un 74,5% leyó al menos un libro en el último año, pero solo un 44,9% lo hace cada semana. Además, la lectura frecuente es más común en hogares con más libros, aunque eso no prueba una causa.">Hace tiempo que no leo un libro</button></div>
 <p id="ytm" class="res" aria-live="polite"></p></section>
 </article>
-<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
-<section id="video" class="blk" aria-labelledby="vh">
-<h2 id="vh">Minireportaje</h2>
-<p>Mira el minireportaje en video.</p>
+</main>
+</div>
+<div class="view" id="v-minireportaje" hidden>
+<header>
+<h1 tabindex="-1">Minireportaje</h1>
+<p class="dek">Los datos muestran cuántos jóvenes leen libros cada semana, pero no alcanzan a contar cómo nace ese vínculo. En este minireportaje de cinco minutos conversamos con la bibliotecaria Susana Pineda y el escritor Víctor Hugo Ortega sobre el papel de la infancia, las guaguatecas y el acompañamiento familiar frente a la lectura obligatoria.</p>
+</header>
+
+<main tabindex="-1">
+<section class="blk" aria-label="Video del minireportaje">
 <div class="vid"><button id="play"><span class="pb" aria-hidden="true"></span><span>Reproducir minireportaje</span></button></div>
 <p class="small"><a href="https://youtu.be/Aw07hY6MdGM" target="_blank" rel="noopener">Abrir en YouTube<span class="vh"> (se abre en una pestaña nueva)</span></a></p>
 </section>
-<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
-<section id="trivia" class="blk" aria-labelledby="th">
-<h2 id="th">Trivia lectora</h2>
+</main>
+</div>
+<div class="view" id="v-trivia" hidden>
+<header>
+<h1 tabindex="-1">Trivia lectora</h1>
+</header>
+
+<main tabindex="-1">
 <p>Pon a prueba tus lecturas con 6 preguntas. Al final te diremos qué nivel de lector tienes. Elige un modo:</p>
 <div class="pick" id="modes">
 <button class="mode" aria-pressed="false"><b>Modo básico</b><span>Lecturas muy conocidas: la infancia y Chile</span></button>
 <button class="mode" aria-pressed="false"><b>Modo avanzado</b><span>Clásicos de la literatura</span></button></div>
 <div id="game" class="card" hidden></div>
-</section>
 </main>
-<footer class="end">Datos: ENPCCL 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</footer>
+</div>
+
+<footer class="end">
+<p id="credito">Datos: ENPCCL 2024, Ministerio de las Culturas, las Artes y el Patrimonio. Elaboración propia.</p>
+<p>Síguenos en Instagram: <a href="https://www.instagram.com/pulsolector_ua?dmpr=MWlpOTN4d3o1N2p3bw%3D%3D" target="_blank" rel="noopener">@pulsolector_ua<span class="vh"> (se abre en una pestaña nueva)</span></a></p>
+</footer>
 
 <script>
+var $=function(i){return document.getElementById(i)},root=document.documentElement;
+var f=function(n){return n.toFixed(1).replace(".",",")+"%"},N=function(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,".")};
+function sv(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function ld(k){try{return localStorage.getItem(k)}catch(e){return null}}
+// Barra de progreso
+var pg=$("prog");
+addEventListener("scroll",function(){var m=document.body.scrollHeight-innerHeight;pg.style.width=(m>0?scrollY/m*100:0)+"%"},{passive:true});
+// Preferencias
+var z=parseFloat(ld("z"))||1;
+function setZ(v){z=Math.min(1.6,Math.max(.9,v));root.style.setProperty("--z",z);sv("z",z)}
+setZ(z);
+$("bigger").onclick=function(){setZ(z+.1)};$("smaller").onclick=function(){setZ(z-.1)};
+function tog(id,fn,key){var b=$(id);function ap(on){b.setAttribute("aria-pressed",on);fn(on)}
+ b.onclick=function(){var on=b.getAttribute("aria-pressed")!=="true";ap(on);sv(key,on?1:0)};
+ if(ld(key)==="1")ap(true)}
+tog("space",function(o){root.classList.toggle("dys",o)},"sp");
+tog("rm",function(o){root.classList.toggle("rm",o)},"rm");
+tog("theme",function(o){root.dataset.theme=o?"dark":(root.dataset.theme==="hc"?"hc":"light");if(o)$("hc").setAttribute("aria-pressed","false")},"dk");
+tog("hc",function(o){if(o){root.dataset.theme="hc";$("theme").setAttribute("aria-pressed","false")}else if(root.dataset.theme==="hc")root.dataset.theme="light"},"hc");
+if(!ld("dk")&&matchMedia("(prefers-color-scheme:dark)").matches){root.dataset.theme="dark";$("theme").setAttribute("aria-pressed","true")}
+// Escuchar
+var sp=$("say");
+if(!("speechSynthesis" in window))sp.hidden=true;
+sp.onclick=function(){
+ var on=sp.getAttribute("aria-pressed")==="true";speechSynthesis.cancel();
+ if(on){sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar";return}
+ sp.setAttribute("aria-pressed","true");sp.textContent="Detener";
+ var parts=[document.querySelector(".view:not([hidden]) h1").textContent].concat([].map.call(document.querySelectorAll(!$("v-reportaje").hidden?"#art > p, #art blockquote":".view:not([hidden]) main p:not(.small)"),function(n){return n.innerText}));
+ parts.forEach(function(t,i){var u=new SpeechSynthesisUtterance(t);u.lang="es-CL";if(i===parts.length-1)u.onend=function(){sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar"};speechSynthesis.speak(u)})};
+addEventListener("pagehide",function(){if(window.speechSynthesis)speechSynthesis.cancel()});
+
+// Modo dislexia y regla de lectura
+tog("dx",function(o){root.classList.toggle("dx",o)},"dx");
+var rl=$("rl");
+tog("ruler",function(o){rl.hidden=!o},"rl");
+function rt(y){rl.style.top=(y-28)+"px"}
+addEventListener("mousemove",function(e){rt(e.clientY)});
+addEventListener("touchmove",function(e){rt(e.touches[0].clientY)},{passive:true});
+addEventListener("focusin",function(e){var r=e.target.getBoundingClientRect();rt(r.top+Math.min(r.height,60)/2)});
+// Panel de accesibilidad
+var pn=$("panel"),op=$("open");
+function panel(o,fo){pn.classList.toggle("open",o);document.body.classList.toggle("pn",o);op.hidden=o;op.setAttribute("aria-expanded",o);sv("pn",o?1:0);if(fo)(o?$("ph"):op).focus()}
+$("close").onclick=function(){panel(false,1)};
+op.onclick=function(){panel(true,1)};
+addEventListener("keydown",function(e){if(e.key==="Escape"&&pn.classList.contains("open"))panel(false,1)});
+document.addEventListener("click",function(e){if(innerWidth<1100&&pn.classList.contains("open")&&!pn.contains(e.target))panel(false,0)});
+op.hidden=false;
+setTimeout(function(){panel(ld("pn")!=="0",0)},400);
+function zl(){$("zl").textContent=Math.round(z*100)+"%"}
+$("bigger").addEventListener("click",zl);$("smaller").addEventListener("click",zl);zl();
+$("reset").onclick=function(){setZ(1);zl();["dx","space","ruler","theme","hc","rm"].forEach(function(i){if($(i).getAttribute("aria-pressed")==="true")$(i).click()})};
+
+
 // EDITAR AQUÍ: datos de los gráficos
 var D1=[["Leyó algo en los últimos 12 meses",99.8,0],["Lee a diario correos, redes sociales, foros o páginas web",93.6,0],["Leyó al menos un libro en los últimos 12 meses",74.5,1],["Lee libros al menos una vez por semana",44.9,1]];
 var D2=[["Menos de 10 libros",32.9,27.8,38.0,626,0],["11 a 25 libros",44.5,38.2,50.9,467,0],["26 a 50 libros",51.1,44.1,58.2,351,1],["51 a 100 libros",50.7,41.1,60.3,180,1],["Más de 100 libros",61.8,51.7,71.9,132,1]];
@@ -340,56 +416,10 @@ document.querySelectorAll("[data-t]").forEach(function(b){b.addEventListener("cl
 // Animación de entrada
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("go");io.unobserve(e.target)}})},{threshold:.35});
 document.querySelectorAll("figure").forEach(function(x){io.observe(x)});
-// Progreso y tiempo de lectura
-var pg=$("prog");
-addEventListener("scroll",function(){var m=document.body.scrollHeight-innerHeight;pg.style.width=(m>0?scrollY/m*100:0)+"%";hideTip()},{passive:true});
+// Tiempo de lectura
+addEventListener("scroll",hideTip,{passive:true});
 var words=$("art").textContent.trim().split(/\s+/).length;
 $("meta").textContent="Lectura de unos "+Math.round(words/200)+" minutos · Los gráficos responden al mouse, al toque y al teclado";
-// Preferencias
-var z=parseFloat(ld("z"))||1;
-function setZ(v){z=Math.min(1.6,Math.max(.9,v));root.style.setProperty("--z",z);sv("z",z)}
-setZ(z);
-$("bigger").onclick=function(){setZ(z+.1)};$("smaller").onclick=function(){setZ(z-.1)};
-function tog(id,fn,key){var b=$(id);function ap(on){b.setAttribute("aria-pressed",on);fn(on)}
- b.onclick=function(){var on=b.getAttribute("aria-pressed")!=="true";ap(on);sv(key,on?1:0)};
- if(ld(key)==="1")ap(true)}
-tog("space",function(o){root.classList.toggle("dys",o)},"sp");
-tog("rm",function(o){root.classList.toggle("rm",o)},"rm");
-tog("theme",function(o){root.dataset.theme=o?"dark":(root.dataset.theme==="hc"?"hc":"light");if(o)$("hc").setAttribute("aria-pressed","false")},"dk");
-tog("hc",function(o){if(o){root.dataset.theme="hc";$("theme").setAttribute("aria-pressed","false")}else if(root.dataset.theme==="hc")root.dataset.theme="light"},"hc");
-if(!ld("dk")&&matchMedia("(prefers-color-scheme:dark)").matches){root.dataset.theme="dark";$("theme").setAttribute("aria-pressed","true")}
-// Escuchar
-var sp=$("say");
-if(!("speechSynthesis" in window))sp.hidden=true;
-sp.onclick=function(){
- var on=sp.getAttribute("aria-pressed")==="true";speechSynthesis.cancel();
- if(on){sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar";return}
- sp.setAttribute("aria-pressed","true");sp.textContent="Detener";
- var parts=[document.querySelector("h1").textContent].concat([].map.call(document.querySelectorAll("#art > p, #art blockquote"),function(n){return n.innerText}));
- parts.forEach(function(t,i){var u=new SpeechSynthesisUtterance(t);u.lang="es-CL";if(i===parts.length-1)u.onend=function(){sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar"};speechSynthesis.speak(u)})};
-addEventListener("pagehide",function(){if(window.speechSynthesis)speechSynthesis.cancel()});
-
-// Modo dislexia y regla de lectura
-tog("dx",function(o){root.classList.toggle("dx",o)},"dx");
-var rl=$("rl");
-tog("ruler",function(o){rl.hidden=!o},"rl");
-function rt(y){rl.style.top=(y-28)+"px"}
-addEventListener("mousemove",function(e){rt(e.clientY)});
-addEventListener("touchmove",function(e){rt(e.touches[0].clientY)},{passive:true});
-addEventListener("focusin",function(e){var r=e.target.getBoundingClientRect();rt(r.top+Math.min(r.height,60)/2)});
-// Panel de accesibilidad
-var pn=$("panel"),op=$("open");
-function panel(o,fo){pn.classList.toggle("open",o);document.body.classList.toggle("pn",o);op.hidden=o;op.setAttribute("aria-expanded",o);sv("pn",o?1:0);if(fo)(o?$("ph"):op).focus()}
-$("close").onclick=function(){panel(false,1)};
-op.onclick=function(){panel(true,1)};
-addEventListener("keydown",function(e){if(e.key==="Escape"&&pn.classList.contains("open"))panel(false,1)});
-document.addEventListener("click",function(e){if(innerWidth<1100&&pn.classList.contains("open")&&!pn.contains(e.target))panel(false,0)});
-op.hidden=false;
-setTimeout(function(){panel(ld("pn")!=="0",0)},400);
-function zl(){$("zl").textContent=Math.round(z*100)+"%"}
-$("bigger").addEventListener("click",zl);$("smaller").addEventListener("click",zl);zl();
-$("reset").onclick=function(){setZ(1);zl();["dx","space","ruler","theme","hc","rm"].forEach(function(i){if($(i).getAttribute("aria-pressed")==="true")$(i).click()})};
-
 // Encuentra tu caso (gráfico 2)
 var p2=$("p2");
 D2.forEach(function(d,i){var b=document.createElement("button");b.textContent=d[0].replace(" libros","");b.setAttribute("aria-pressed","false");
@@ -401,8 +431,12 @@ vc.querySelectorAll(".c").forEach(function(g,j){g.addEventListener("click",funct
 // Y tú
 document.querySelectorAll(".ytu .pick button").forEach(function(b,i,all){b.onclick=function(){all.forEach(function(x){x.setAttribute("aria-pressed",x===b)});$("ytm").textContent=b.dataset.m}});
 
-// Video
-$("play").onclick=function(){document.querySelector(".vid").innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/Aw07hY6MdGM?autoplay=1&rel=0" title="Minireportaje en YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>'};
+
+var vidBox=document.querySelector(".vid"),vidHTML=vidBox.innerHTML;
+function bindPlay(){$("play").onclick=function(){vidBox.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/Aw07hY6MdGM?autoplay=1&rel=0" title="Minireportaje en YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>'}}
+bindPlay();
+function resetVid(){if(vidBox.querySelector("iframe")){vidBox.innerHTML=vidHTML;bindPlay()}}
+
 // Trivia (la primera opción de cada pregunta es la correcta; se mezclan al mostrarlas)
 var TQ=[[
 ["¿Quién creó a Papelucho, el niño chileno que cuenta sus aventuras en un diario?",["Marcela Paz","Gabriela Mistral","María Luisa Bombal","Isabel Allende"],"Marcela Paz es el seudónimo de Ester Huneeus."],
@@ -440,6 +474,22 @@ function result(){var l=LV[mode][sc<2?0:sc<4?1:sc<6?2:3],d="";for(var i=0;i<6;i+
  G.innerHTML='<div class="prog" aria-hidden="true">'+d+'</div><p class="small">Resultado · '+(mode?"Modo avanzado":"Modo básico")+'</p><h3 id="qh" tabindex="-1">Tu nivel de lector</h3><p class="score">'+sc+' de 6</p><p><span class="lvl">'+l[0]+'</span></p><p>'+l[1]+'</p><p class="small">Es solo un juego: no mide cuánto ni cómo lees.</p><div class="pick"><button id="again">Jugar de nuevo</button><button id="other">'+(mode?"Probar el modo básico":"Probar el modo avanzado")+"</button></div>";
  $("again").onclick=function(){start(mode)};$("other").onclick=function(){start(1-mode)};$("qh").focus()}
 [].forEach.call($("modes").children,function(b,i){b.onclick=function(){start(i)}});
+
+// Vistas (reportaje, minireportaje y trivia en un solo archivo)
+var VIEWS=["reportaje","minireportaje","trivia"],
+ TT={reportaje:"Leer por gusto: el hábito que no termina de instalarse entre los jóvenes",minireportaje:"Minireportaje · Leer por gusto",trivia:"Trivia lectora · Leer por gusto"};
+function route(first){
+ var h=location.hash.slice(1);if(VIEWS.indexOf(h)<0)h="reportaje";
+ VIEWS.forEach(function(v){$("v-"+v).hidden=v!==h;var a=$("n-"+v);if(v===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+ document.title=TT[h];$("credito").hidden=h!=="reportaje";
+ if(h!=="minireportaje")resetVid();
+ if(window.speechSynthesis){speechSynthesis.cancel();sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar"}
+ hideTip();
+ if(!first){scrollTo(0,0);$("v-"+h).querySelector("h1").focus({preventScroll:true})}
+}
+addEventListener("hashchange",function(){route(false)});
+$("skip").onclick=function(e){e.preventDefault();var m=document.querySelector(".view:not([hidden]) main");m.focus();m.scrollIntoView()};
+route(true);
 </script>
 </body>
 </html>
