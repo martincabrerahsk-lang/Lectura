@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Leer por gusto: el hábito que no termina de instalarse entre los jóvenes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap">
 <style>
 :root{--bg:#fff;--soft:#EAF4FC;--ink:#0B2A4A;--acc:#1F5FA8;--lo:#8EC5F0;--hi:#1F5FA8;--mut:#5B7083;--line:#8EC5F0;--z:1;--lh:1.75;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -22,9 +22,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font:1rem/var(--lh) "Atkinso
 .skip:focus{left:.5rem;top:.5rem}
 :focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:4px}
 #prog{position:fixed;top:0;left:0;height:4px;width:0;background:var(--acc);z-index:60}
-.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(.5rem + env(safe-area-inset-top,0px)) .75rem .5rem}
-.bar div{max-width:960px;margin:auto;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
-.bar b{font-size:.8rem;color:var(--mut);margin-right:auto}
 button{font:inherit;font-size:.85rem;font-weight:700;color:var(--ink);background:var(--soft);border:2px solid var(--line);border-radius:999px;padding:.35rem .8rem;cursor:pointer;min-height:44px}
 button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 button:hover{border-color:var(--acc)}
@@ -59,10 +56,6 @@ figcaption p{margin:0 0 .5rem}
 .axis{display:flex;justify-content:space-between;font-size:.75rem;color:var(--mut);margin:.4rem 0 0}
 svg{display:block;width:100%;height:auto;overflow:visible}
 svg text{font-family:inherit;fill:var(--ink)}
-.col{cursor:pointer;transition:opacity .2s}
-svg:hover .col:not(:hover){opacity:.7}
-.colr{transform-origin:bottom;transform-box:fill-box;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.go .colr{transform:scaleY(1)}
 #tip{position:fixed;z-index:70;pointer-events:none;background:var(--ink);color:var(--bg);padding:.5rem .7rem;border-radius:8px;font-size:.82rem;line-height:1.4;max-width:240px;opacity:0;transition:opacity .15s}
 #tip.on{opacity:1}
 table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:.8rem}
@@ -74,32 +67,114 @@ footer.end{max-width:720px;margin:3rem auto 4rem;padding:1.5rem 1.1rem 0;border-
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.fill{width:var(--w)}.colr{transform:none}}
 .rm *{transition:none!important}.rm .fill{width:var(--w)}.rm .colr{transform:none}
 [data-theme="hc"] .fill.lo{background-image:none}[data-theme="hc"] .hbar b,[data-theme="hc"] a{text-decoration:underline}
+
+body{background-image:radial-gradient(circle at 8% 0,var(--soft) 0,transparent 34%),radial-gradient(circle at 100% 38%,var(--soft) 0,transparent 28%);background-repeat:no-repeat;transition:padding .45s}
+@media (min-width:1100px){body.pn{padding-right:310px}}
+#panel{position:fixed;top:0;right:0;height:100%;width:min(310px,88vw);z-index:80;background:var(--bg);border-left:3px solid var(--acc);box-shadow:-10px 0 30px rgba(11,42,74,.18);padding:calc(1rem + env(safe-area-inset-top,0px)) 1.1rem calc(1.5rem + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(100%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
+#panel.open{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+#panel .top{display:flex;gap:.5rem;align-items:flex-start;justify-content:space-between}
+#panel h2{font:800 1.35rem/1.15 Fraunces,Georgia,serif;margin:0 0 .5rem}
+#panel p{font-size:.84rem;line-height:1.5;color:var(--mut);margin:0 0 .9rem}
+#panel .grp{display:grid;gap:.5rem;margin-bottom:1.2rem}
+#panel h3{font-size:.9rem;margin:0;color:var(--acc);border-bottom:2px solid var(--line);padding-bottom:.25rem}
+#panel .grp p{margin:0}
+#panel button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:.5rem;text-align:left;border-radius:12px}
+#panel button[aria-pressed]::after{content:"Desactivado";font-weight:400;font-size:.74rem}
+#panel button[aria-pressed="true"]::after{content:"Activado"}
+#panel #say::after{content:none}
+#panel .sz{display:flex;gap:.5rem}#panel .sz button{justify-content:center}
+#panel #close{width:auto}
+#open{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:79;writing-mode:vertical-rl;border-radius:14px 0 0 14px;border-right:0;padding:1rem .6rem;background:var(--acc);color:var(--bg);border-color:var(--acc);box-shadow:-4px 4px 14px rgba(11,42,74,.2)}
+.axis{padding-right:4.5rem}
+.drop::first-letter{font:800 3.8rem/.85 Fraunces,Georgia,serif;float:left;margin:.08em .12em 0 0;color:var(--acc)}
+.orn{display:flex;align-items:center;gap:1rem;margin:2.6rem 0;color:var(--acc)}
+.orn::before,.orn::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
+.orn svg{width:34px;height:26px}
+.shelf{width:100%;height:auto;margin-top:2rem}
+.shelf rect{transform-origin:bottom;transform-box:fill-box;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes grow{from{transform:scaleY(0)}}
+.kpis{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;padding:0;margin:1.6rem 0 0}
+@media (min-width:620px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpis li{background:var(--soft);border-bottom:4px solid var(--acc);border-radius:10px 10px 0 0;padding:.8rem .9rem;font-size:.82rem;line-height:1.35;color:var(--mut)}
+.kpis b{display:block;font:800 1.9rem/1.1 Fraunces,Georgia,serif;color:var(--acc);margin-bottom:.2rem}
+blockquote{position:relative;background:var(--soft);border-radius:0 14px 14px 0;padding:1.5rem 1.4rem 1.2rem 1.5rem}
+blockquote::before{content:"“"/"";position:absolute;top:-.55rem;left:.8rem;font:800 4.4rem/1 Fraunces,Georgia,serif;color:var(--lo)}
+figure{border:2px solid var(--line);box-shadow:6px 6px 0 var(--lo)}
+.vc{display:grid;grid-template-columns:2.8rem 1fr;column-gap:.5rem;--g:clamp(.25rem,2vw,.9rem);margin-top:1.6rem}
+.yax{position:relative;height:270px}
+.yax span{position:absolute;right:0;transform:translateY(50%);font-size:.75rem;color:var(--mut)}
+.plot{position:relative;height:270px;display:grid;grid-template-columns:repeat(5,1fr);gap:var(--g);border-bottom:2px solid var(--ink)}
+.plot::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,var(--line) 0 1px,transparent 1px 25%);opacity:.5;pointer-events:none}
+.c{position:relative;cursor:pointer;border-radius:6px 6px 0 0}
+.c:hover,.c:focus-visible{background:rgba(142,197,240,.25)}
+.cbar{position:absolute;left:14%;right:14%;bottom:0;height:0;background:var(--lo);border:2px solid var(--hi);border-bottom:0;border-radius:6px 6px 0 0;transition:height 1s cubic-bezier(.2,.7,.2,1)}
+.cbar.hi{background:var(--hi)}
+.cbar.lo{background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(11,42,74,.22) 6px 8px)}
+.go .cbar{height:calc(var(--h)*1%)}
+.ci2,.val{opacity:0;transition:opacity .5s 1s}
+.go .ci2,.go .val{opacity:1}
+.ci2{position:absolute;left:calc(50% - 1px);width:2px;bottom:calc(var(--a)*1%);height:calc((var(--b) - var(--a))*1%);background:var(--ink);filter:drop-shadow(0 0 1px var(--bg)) drop-shadow(0 0 1px var(--bg))}
+.ci2::before,.ci2::after{content:"";position:absolute;left:-7px;width:16px;height:2px;background:var(--ink)}
+.ci2::before{top:0}.ci2::after{bottom:0}
+.noci .ci2{display:none}
+.val{position:absolute;left:0;right:0;text-align:center;bottom:calc(var(--b)*1% + 8px)}
+.noci .val{bottom:calc(var(--h)*1% + 6px)}
+.lbls{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--g);margin-top:.5rem;text-align:center;font-size:.8rem;line-height:1.25}
+#rl{position:fixed;left:0;right:0;top:40%;height:56px;pointer-events:none;z-index:40;border-top:2px solid var(--acc);border-bottom:2px solid var(--acc);box-shadow:0 0 0 100vmax rgba(11,42,74,.4)}
+.dx{--lh:2.05}
+.dx body{font-family:Lexend,"Atkinson Hyperlegible",sans-serif;letter-spacing:.04em;word-spacing:.2em}
+.dx[data-theme="light"]{--bg:#FBF6E6;--soft:#F0E9CF}
+.dx header,.dx main{max-width:640px}
+.dx p{margin-bottom:1.9rem}
+.dx .dek,.dx blockquote{font-style:normal}
+.dx h1{font-family:Lexend,sans-serif;font-weight:600;letter-spacing:0}
+.dx .drop::first-letter{font:inherit;float:none;margin:0;color:inherit}
+.dx blockquote::before,.dx .orn,.dx .shelf{display:none}
+[data-theme="hc"] figure{box-shadow:none}[data-theme="hc"] .cbar.lo{background-image:none}
+@media (prefers-reduced-motion:reduce){.cbar{height:calc(var(--h)*1%)}.ci2,.val{opacity:1}}
+.rm *{animation:none!important}.rm .cbar{height:calc(var(--h)*1%)}.rm .ci2,.rm .val{opacity:1}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="bk" viewBox="0 0 32 24"><path d="M2 4c5-2 10-2 14 1 4-3 9-3 14-1v16c-5-2-10-2-14 1-4-3-9-3-14-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 5v16" stroke="currentColor" stroke-width="2"/></symbol></svg>
 <a class="skip" href="#contenido">Saltar al reportaje</a>
 <div id="prog" aria-hidden="true"></div>
-<nav class="bar" aria-label="Opciones de lectura"><div>
-<b>Ajusta tu lectura</b>
-<button id="smaller" aria-label="Reducir tamaño de letra">A−</button>
-<button id="bigger" aria-label="Aumentar tamaño de letra">A+</button>
+<aside id="panel" aria-labelledby="ph">
+<div class="top"><h2 id="ph" tabindex="-1">Panel de accesibilidad</h2><button id="close" aria-label="Ocultar panel de accesibilidad">Ocultar</button></div>
+<p>Personaliza cómo lees. Tus ajustes se guardan en este dispositivo y la tecla Esc cierra el panel.</p>
+<div class="grp"><h3>Texto</h3><div class="sz"><button id="smaller" aria-label="Reducir tamaño de letra">A−</button><button id="bigger" aria-label="Aumentar tamaño de letra">A+</button></div><p>Tamaño de letra: <b id="zl" aria-live="polite">100%</b></p></div>
+<div class="grp"><h3>Lectura</h3>
+<button id="dx" aria-pressed="false">Modo dislexia</button>
+<p>Fuente Lexend, más espacio entre letras y palabras, textos sin cursiva, fondo crema y líneas más cortas.</p>
 <button id="space" aria-pressed="false">Más espacio</button>
+<button id="ruler" aria-pressed="false">Regla de lectura</button>
+<button id="say" aria-pressed="false">Escuchar</button></div>
+<div class="grp"><h3>Pantalla</h3>
 <button id="theme" aria-pressed="false">Modo oscuro</button>
 <button id="hc" aria-pressed="false">Alto contraste</button>
-<button id="rm" aria-pressed="false">Sin movimiento</button>
-<button id="say" aria-pressed="false">Escuchar</button>
-</div></nav>
+<button id="rm" aria-pressed="false">Sin movimiento</button></div>
+<button id="reset">Restablecer todo</button>
+</aside>
+<button id="open" aria-controls="panel" aria-expanded="false" aria-label="Abrir panel de accesibilidad" hidden>Accesibilidad</button>
+<div id="rl" hidden></div>
 <div id="tip" role="status" aria-live="polite"></div>
 
 <header>
 <h1>Leer por gusto: el hábito que no termina de instalarse entre los jóvenes</h1>
 <p class="dek">Entre los 20 y los 29 años casi nadie queda fuera de la lectura, pero solo una parte lee libros con frecuencia y por gusto. La Encuesta Nacional de Participación Cultural y Comportamiento Lector (ENPCCL) 2024 muestra que ese hábito se asocia con los libros que hay en casa y, en menor medida, con el empujón familiar de la infancia.</p>
 <p class="meta" id="meta">Lectura de unos 7 minutos · Los gráficos responden al mouse, al toque y al teclado</p>
+<svg id="shelf" class="shelf" viewBox="0 0 640 120" aria-hidden="true"></svg>
+<ul class="kpis" aria-label="Cifras clave del reportaje">
+<li><b data-n="99.8">99,8%</b>leyó algo en los últimos 12 meses</li>
+<li><b data-n="74.5">74,5%</b>leyó al menos un libro en el último año</li>
+<li><b data-n="44.9">44,9%</b>lee libros al menos una vez por semana</li>
+<li><b data-n="61.8">61,8%</b>lee cada semana en hogares con más de 100 libros</li>
+</ul>
 </header>
 
 <main id="contenido" tabindex="-1">
 <article id="art">
-<p>Para muchos jóvenes, leer es parte de la rutina: al despertar revisan mensajes, correos o redes sociales, y durante el día se topan con textos todo el tiempo. Pero estar rodeado de lectura no es lo mismo que tomar un libro por iniciativa propia. Los datos de la ENPCCL 2024 para las personas de entre 20 y 29 años lo muestran bien: casi todas leen algo, y la cifra va bajando a medida que se pide más, primero libros y después frecuencia. El siguiente gráfico muestra cuatro cifras, de la más amplia a la más exigente. La primera reúne las cinco preguntas de lectura de la encuesta (libros, diarios y revistas, cómics, textos de trabajo o estudio, y correos, redes y páginas web) y las otras tres salen de una sola pregunta cada una.</p>
+<p class="drop">Para muchos jóvenes, leer es parte de la rutina: al despertar revisan mensajes, correos o redes sociales, y durante el día se topan con textos todo el tiempo. Pero estar rodeado de lectura no es lo mismo que tomar un libro por iniciativa propia. Los datos de la ENPCCL 2024 para las personas de entre 20 y 29 años lo muestran bien: casi todas leen algo, y la cifra va bajando a medida que se pide más, primero libros y después frecuencia. El siguiente gráfico muestra cuatro cifras, de la más amplia a la más exigente. La primera reúne las cinco preguntas de lectura de la encuesta (libros, diarios y revistas, cómics, textos de trabajo o estudio, y correos, redes y páginas web) y las otras tres salen de una sola pregunta cada una.</p>
 
 <figure id="f1" aria-labelledby="d1">
 <p class="vh" id="d1">Gráfico de barras horizontales sobre la lectura de jóvenes de 20 a 29 años. Leyó algo en los últimos 12 meses: 99,8%. Lee a diario correos, redes sociales, foros o páginas web: 93,6%. Leyó al menos un libro en los últimos 12 meses: 74,5%. Lee libros al menos una vez por semana: 44,9%.</p>
@@ -116,6 +191,7 @@ footer.end{max-width:720px;margin:3rem auto 4rem;padding:1.5rem 1.1rem 0;border-
 
 <p>Casi todos leyeron algo en el último año (<strong>99,8%</strong>) y un 93,6% lee a diario correos, redes sociales, foros o páginas web. Con los libros la cifra baja: un 74,5% leyó al menos uno en los últimos doce meses y un <strong>44,9%</strong> los lee una vez por semana o más.</p>
 
+<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
 <p>¿Y por qué leen? Cuando se pregunta por el principal motivo, un <strong>35,7%</strong> dice que lo hace porque le gusta y un 48,4% por estudios o para informarse. Si pueden marcar más de una razón, un <strong>81,8%</strong> incluye el gusto o el ocio. <strong>Ojo:</strong> estas dos cifras no se pueden comparar, porque vienen de preguntas distintas y con alternativas distintas. Lo que muestran es que el gusto está presente, aunque no siempre sea la razón principal.</p>
 
 <p>Además, obligación y gusto no son enemigos. Un 58,5% de los jóvenes lee tanto por razones de estudio o trabajo como por interés personal, y dentro de ese grupo un 50,1% lee libros cada semana. Entre quienes leen solo por gusto, la cifra es de 38,4%, y entre quienes leen solo por estudio o trabajo, de 37,4%.</p>
@@ -124,12 +200,13 @@ footer.end{max-width:720px;margin:3rem auto 4rem;padding:1.5rem 1.1rem 0;border-
 
 <p>Si se cruzan dos preguntas de la encuesta, cuánto se leen libros y cuál es el principal motivo para leer, aparece otro dato: un <strong>19,1%</strong> de los jóvenes lee libros al menos una vez por semana y, a la vez, dice que lo hace sobre todo porque le gusta. Es un cruce que hicimos nosotros, no una pregunta directa de la encuesta. Además, la pregunta sobre el motivo se refiere a leer en general, lo que incluye, por ejemplo, contenidos digitales. Por eso el 19,1% no equivale a «los jóvenes que leen libros por placer», sino que es una pista de cuántos combinan lectura frecuente de libros con gusto declarado.</p>
 
+<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
 <p>Entonces, ¿qué distingue a quienes leen libros con más frecuencia? Una de las pistas más claras es el entorno, en particular cuántos libros hay en la casa. El gráfico siguiente muestra qué porcentaje de jóvenes lee libros al menos una vez por semana, según el número de libros que hay en su hogar. Las líneas verticales indican el margen de error de la encuesta: mientras más corta la línea, más precisa es la cifra.</p>
 
 <figure id="f2" aria-labelledby="d2">
 <p class="vh" id="d2">Gráfico de columnas con barras de error. Porcentaje que lee libros al menos una vez por semana según libros en el hogar: menos de 10 libros, 32,9%; 11 a 25, 44,5%; 26 a 50, 51,1%; 51 a 100, 50,7%; más de 100, 61,8%. Los márgenes de error están en la tabla de datos.</p>
-<svg id="s2" viewBox="0 0 640 330" role="img" aria-labelledby="d2"></svg>
-<div class="tools"><button data-t="t2" aria-expanded="false">Ver datos en tabla</button></div>
+<div class="vc" id="h2" role="group" aria-labelledby="d2"></div>
+<div class="tools"><button data-t="t2" aria-expanded="false">Ver datos en tabla</button><button id="ci" aria-pressed="true">Margen de error</button></div>
 <table id="t2" hidden><caption class="vh">Datos del gráfico 2</caption><thead><tr><th>Libros en el hogar</th><th>Valor</th><th>Margen 95%</th><th>n</th></tr></thead><tbody></tbody></table>
 <figcaption>
 <p><strong>Pregunta:</strong> «¿Cuántos libros hay en su hogar?», cruzada con «En los últimos 12 meses, ¿con qué frecuencia ha leído libros durante al menos 15 minutos?». Se muestra el porcentaje que respondió «al menos una vez al día» o «al menos una vez a la semana» en cada tramo. «Más de 100 libros» reúne los tramos «101 a 200» y «Más de 200» de la encuesta. Las líneas verticales indican el margen de error al 95%. Los libros corresponden al hogar actual, no al de la infancia, y los resultados muestran una asociación, no una relación causal. Las columnas en azul oscuro corresponden a hogares con 26 libros o más.</p>
@@ -144,6 +221,7 @@ footer.end{max-width:720px;margin:3rem auto 4rem;padding:1.5rem 1.1rem 0;border-
 
 <blockquote><p>Creo que el entorno y la cultura lectora juega un rol fundamental en la incentivación de la lectura, de hecho, es una de las razones por las que en Chile se han incluido en distintas bibliotecas del país un sector de niños y niñas. Con la idea de hacer amigable la lectura para todos.</p><footer>Susana Pineda, bibliotecaria del Centro Cultural Gabriela Mistral (GAM)</footer></blockquote>
 
+<div class="orn" aria-hidden="true"><svg><use href="#bk"/></svg></div>
 <p>También importa lo que se vivió de niño. Un 58,8% de los jóvenes recuerda que en su infancia lo animaron a leer libros distintos a los del colegio, sobre todo su madre (59,3%), mientras que los profesores aparecen en un 4,9%. Entre quienes recibieron ese estímulo, un 48,3% lee libros semanalmente, frente a un 40% de quienes no. Esa diferencia pierde fuerza al considerar otras variables, y como son recuerdos de los propios encuestados, no permiten decir que ese estímulo causó el hábito actual.</p>
 
 <p>Las diferencias también se ven según el nivel socioeconómico. Entre los jóvenes de nivel alto, un 54,1% lee libros semanalmente, frente a un 39,5% en el nivel bajo, y un 65,9% del nivel alto vive en casas con 26 libros o más, frente a un 34,4% del nivel bajo. Sin embargo, el gusto como principal motivo para leer es parecido en todos los grupos, en torno a un tercio de los jóvenes. Es decir, el interés por leer está en todos lados; lo que cambia son las condiciones y los espacios para practicarlo.</p>
@@ -179,28 +257,21 @@ D1.forEach(function(d){
  ul.appendChild(li);
  tb.insertAdjacentHTML("beforeend","<tr><td>"+d[0]+"</td><td>"+f(d[1])+"</td></tr>");
 });
-// Gráfico 2
-var s=$("s2"),L=48,R=8,T=26,B=64,W=640,H=330,pw=W-L-R,ph=H-T-B,bw=pw/5,h="";
-function Y(v){return T+ph-v/80*ph}
-[0,20,40,60,80].forEach(function(v){h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="var(--line)" stroke-opacity="'+(v?".35":"1")+'"/><text x="'+(L-8)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="12" style="fill:var(--mut)">'+v+'%</text>'});
-var t2=$("t2").tBodies[0];
+// Gráfico 2 (columnas en HTML, nítidas en cualquier pantalla)
+var vc=$("h2"),t2=$("t2").tBodies[0],yx="",pl="",lb="",pc=function(x){return x/.8};
+[0,20,40,60,80].forEach(function(v){yx+='<span style="bottom:'+pc(v)+'%">'+v+'%</span>'});
 D2.forEach(function(d,i){
- var cx=L+bw*i+bw/2,w=bw*.58,y=Y(d[1]),lab=d[0].replace(" libros","");
- var tt="<b>"+d[0]+"</b><br>"+f(d[1])+"<br>Margen de error 95%: "+f(d[2])+" a "+f(d[3])+"<br>n = "+N(d[4]);
- h+='<g class="col" tabindex="0" data-i="'+i+'" aria-label="'+d[0]+": "+f(d[1])+", margen de error "+f(d[2])+" a "+f(d[3])+", n = "+d[4]+'">'+
- '<rect x="'+(cx-bw/2)+'" y="'+T+'" width="'+bw+'" height="'+ph+'" fill="transparent"/>'+
- '<rect class="colr" x="'+(cx-w/2)+'" y="'+y+'" width="'+w+'" height="'+(Y(0)-y)+'" rx="3" fill="'+(d[5]?"var(--hi)":"var(--lo)")+'" stroke="var(--hi)" stroke-width="2" style="transition-delay:'+i*90+'ms"/>'+
- '<path d="M'+cx+' '+Y(d[2])+'V'+Y(d[3])+'M'+(cx-9)+' '+Y(d[2])+'h18M'+(cx-9)+' '+Y(d[3])+'h18" stroke="var(--ink)" stroke-width="2" fill="none"/>'+
- '<text x="'+cx+'" y="'+(Y(d[3])-8)+'" text-anchor="middle" font-size="15" font-weight="700">'+f(d[1])+'</text>'+
- '<text x="'+cx+'" y="'+(H-38)+'" text-anchor="middle" font-size="13">'+lab+'</text><text x="'+cx+'" y="'+(H-20)+'" text-anchor="middle" font-size="13">libros</text></g>';
+ d.tt="<b>"+d[0]+"</b><br>"+f(d[1])+"<br>Margen de error 95%: "+f(d[2])+" a "+f(d[3])+"<br>n = "+N(d[4]);
+ pl+='<div class="c" tabindex="0" data-i="'+i+'" role="img" aria-label="'+d[0]+": "+f(d[1])+", margen de error "+f(d[2])+" a "+f(d[3])+", n = "+d[4]+'" style="--h:'+pc(d[1])+";--a:"+pc(d[2])+";--b:"+pc(d[3])+'"><span class="cbar '+(d[5]?"hi":"lo")+'"></span><span class="ci2"></span><b class="val">'+f(d[1])+"</b></div>";
+ lb+="<span>"+d[0]+"</span>";
  t2.insertAdjacentHTML("beforeend","<tr><td>"+d[0]+"</td><td>"+f(d[1])+"</td><td>"+f(d[2])+" a "+f(d[3])+"</td><td>"+N(d[4])+"</td></tr>");
- D2[i].tt=tt;
 });
-s.innerHTML=h;
-s.querySelectorAll(".col").forEach(function(g){
+vc.innerHTML='<div class="yax" aria-hidden="true">'+yx+'</div><div class="plot">'+pl+'</div><span></span><div class="lbls" aria-hidden="true">'+lb+"</div>";
+vc.querySelectorAll(".c").forEach(function(g){
  function at(e){var r=g.getBoundingClientRect();showTip(D2[g.dataset.i].tt,e.clientX||r.left+r.width/2,e.clientY||r.top)}
  g.addEventListener("mousemove",at);g.addEventListener("mouseleave",hideTip);g.addEventListener("focus",at);g.addEventListener("blur",hideTip);g.addEventListener("click",at);
 });
+$("ci").onclick=function(){var on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);$("f2").classList.toggle("noci",!on)};
 // Tablas
 document.querySelectorAll("[data-t]").forEach(function(b){b.addEventListener("click",function(){var t=$(b.dataset.t),o=t.hidden;t.hidden=!o;b.setAttribute("aria-expanded",o);b.textContent=o?"Ocultar tabla":"Ver datos en tabla"})});
 // Animación de entrada
@@ -234,6 +305,35 @@ sp.onclick=function(){
  var parts=[document.querySelector("h1").textContent].concat([].map.call(document.querySelectorAll("#art > p, #art blockquote"),function(n){return n.innerText}));
  parts.forEach(function(t,i){var u=new SpeechSynthesisUtterance(t);u.lang="es-CL";if(i===parts.length-1)u.onend=function(){sp.setAttribute("aria-pressed","false");sp.textContent="Escuchar"};speechSynthesis.speak(u)})};
 addEventListener("pagehide",function(){if(window.speechSynthesis)speechSynthesis.cancel()});
+
+// Estante decorativo
+(function(){var c=["var(--hi)","var(--lo)","var(--acc)","var(--soft)"],x=4,i=0,t="";
+while(x<616){var w=20+(i*7)%16,ht=52+(i*37)%52;t+='<rect x="'+x+'" y="'+(116-ht)+'" width="'+w+'" height="'+ht+'" rx="2" fill="'+c[i%4]+'" stroke="var(--hi)" stroke-width="2" style="animation-delay:'+i*55+'ms"/>';x+=w+3;i++}
+$("shelf").innerHTML=t+'<line x1="0" x2="640" y1="117" y2="117" stroke="var(--ink)" stroke-width="3"/>'})();
+// Cifras clave con conteo
+var calm=function(){return root.classList.contains("rm")||matchMedia("(prefers-reduced-motion:reduce)").matches};
+var kio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;kio.unobserve(e.target);var b=e.target.querySelector("b"),to=parseFloat(b.dataset.n);if(calm())return;var t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1200);b.textContent=f(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
+document.querySelectorAll(".kpis li").forEach(function(x){kio.observe(x)});
+// Modo dislexia y regla de lectura
+tog("dx",function(o){root.classList.toggle("dx",o)},"dx");
+var rl=$("rl");
+tog("ruler",function(o){rl.hidden=!o},"rl");
+function rt(y){rl.style.top=(y-28)+"px"}
+addEventListener("mousemove",function(e){rt(e.clientY)});
+addEventListener("touchmove",function(e){rt(e.touches[0].clientY)},{passive:true});
+addEventListener("focusin",function(e){var r=e.target.getBoundingClientRect();rt(r.top+Math.min(r.height,60)/2)});
+// Panel de accesibilidad
+var pn=$("panel"),op=$("open");
+function panel(o,fo){pn.classList.toggle("open",o);document.body.classList.toggle("pn",o);op.hidden=o;op.setAttribute("aria-expanded",o);sv("pn",o?1:0);if(fo)(o?$("ph"):op).focus()}
+$("close").onclick=function(){panel(false,1)};
+op.onclick=function(){panel(true,1)};
+addEventListener("keydown",function(e){if(e.key==="Escape"&&pn.classList.contains("open"))panel(false,1)});
+document.addEventListener("click",function(e){if(innerWidth<1100&&pn.classList.contains("open")&&!pn.contains(e.target))panel(false,0)});
+op.hidden=false;
+setTimeout(function(){panel(ld("pn")!=="0",0)},400);
+function zl(){$("zl").textContent=Math.round(z*100)+"%"}
+$("bigger").addEventListener("click",zl);$("smaller").addEventListener("click",zl);zl();
+$("reset").onclick=function(){setZ(1);zl();["dx","space","ruler","theme","hc","rm"].forEach(function(i){if($(i).getAttribute("aria-pressed")==="true")$(i).click()})};
 </script>
 </body>
 </html>
